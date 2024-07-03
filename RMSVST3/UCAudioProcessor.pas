@@ -20,7 +20,7 @@ public
   function SetProcessing(state: TBool): TResult; stdcall;
   function Process(var data: TProcessData): TResult; stdcall;
   function GetTailSamples: uint32; stdcall;
-  constructor Create(const Controller:  IVST3Processor);
+  constructor Create(const AController:  IVST3Processor);
 end;
 
 implementation
@@ -29,7 +29,7 @@ implementation
 
 uses ULogger, SysUtils, UVSTBase;
 
-function CAudioProcessor.CanProcessSampleSize( symbolicSampleSize: int32): TResult;
+function CAudioProcessor.CanProcessSampleSize( symbolicSampleSize: int32): TResult;  stdcall;
 begin
   WriteLog('CAudioProcessor.CanProcessSampleSize:'+symbolicSampleSize.ToString);
   result:=kResultFalse;
@@ -37,15 +37,15 @@ begin
      result:=kResultTrue;
 end;
 
-constructor CAudioProcessor.Create(const Controller: IVST3Processor);
+constructor CAudioProcessor.Create(const AController: IVST3Processor);
 begin
   WriteLog('CAudioProcessor.Create');
-  inherited Create(controller);
-  IVST3:=Controller;
+  inherited Create(AController);
+  IVST3:=AController;
   FhostContext:=NIL;
 end;
 
-function CAudioProcessor.GetBusArrangement(dir: TBusDirection; index: int32;  var arr: TSpeakerArrangement): TResult;
+function CAudioProcessor.GetBusArrangement(dir: TBusDirection; index: int32;  var arr: TSpeakerArrangement): TResult; stdcall;
 begin
   WriteLog('CAudioProcessor.GetBusArrangement');
   arr:=3; //
@@ -62,13 +62,13 @@ begin
 end;
 
 
-function CAudioProcessor.GetLatencySamples: uint32;
+function CAudioProcessor.GetLatencySamples: uint32; stdcall;
 begin
 //  WriteLog('CAudioProcessor.GetLatencySamples');
   result:=0;
 end;
 
-function CAudioProcessor.GetTailSamples: uint32;
+function CAudioProcessor.GetTailSamples: uint32;   stdcall;
 begin
   WriteLog('CAudioProcessor.GetTailSamples');
   result:=kNoTail;
@@ -76,12 +76,12 @@ end;
 
 {$POINTERMATH ON}
 
-function CAudioProcessor.Process(var data: TProcessData): TResult;
+function CAudioProcessor.Process(var data: TProcessData): TResult; stdcall;
 const MIDI_NOTE_ON = $90;
       MIDI_NOTE_OFF = $80;
       MIDI_CC = $B0;
     procedure ProcessMidiOut;
-    VAR buffer:TArray<integer>;
+    VAR buffer:specialize TArray<integer>;
     VAR event:TVstEvent;
         i,status,midichannel,data1,data2:integer;
         doAdd:boolean;
@@ -158,7 +158,7 @@ const MIDI_NOTE_ON = $90;
       numParamsChanged := data.inputParameterChanges.getParameterCount;
       for index := 0 to numParamsChanged-1 do
       begin
-        paramQueue:=data.inputParameterChanges.getParameterData(index);
+        paramQueue:=IParamValueQueue(data.inputParameterChanges.getParameterData(index)  );
         if (paramQueue<>NIL) then
         begin
           WriteLog('CAudioProcessor.ProcessParameters');
@@ -187,21 +187,21 @@ const MIDI_NOTE_ON = $90;
         newPlaying,playStateChanged:boolean;
         state:TStatesAndFlags;
     begin
-      state:=data.processContext.state;
-      newSamplerate:=data.processContext.sampleRate;
+      state:=data.processContext^.state;
+      newSamplerate:=data.processContext^.sampleRate;
       if (newSamplerate<>FSampleRate)  then
       begin
         FSampleRate:=NewSampleRate;
         IVST3.SamplerateChanged(FSamplerate);
       end;
-      newTempo:=data.processContext.tempo;
+      newTempo:=data.processContext^.tempo;
       if (newTempo<>FTempo) and (state and kTempoValid <> 0) then
       begin
         FTempo:=NewTempo;
         IVST3.TempoChanged(FTempo);
       end;
       playstateChanged:=false;
-      newPPQ:=trunc(data.processContext.projectTimeMusic);
+      newPPQ:=trunc(data.processContext^.projectTimeMusic);
       if (newPPQ<>FPPQ) then
       begin
         FPPQ:=NewPPQ;
@@ -228,20 +228,20 @@ begin
 end;
 
 
-function CAudioProcessor.SetBusArrangements(inputs: PSpeakerArrangement;  numIns: int32; outputs: PSpeakerArrangement; numOuts: int32): TResult;
+function CAudioProcessor.SetBusArrangements(inputs: PSpeakerArrangement;  numIns: int32; outputs: PSpeakerArrangement; numOuts: int32): TResult;stdcall;
 begin
   WriteLog('CAudioProcessor.SetBusArrangement');
 	result:=kResultTrue;
 end;
 
-function CAudioProcessor.SetProcessing(state: TBool): TResult;
+function CAudioProcessor.SetProcessing(state: TBool): TResult; stdcall;
 begin
   WriteLog('CAudioProcessor.SetProcessing');
 	result:=kResultTrue;
 end;
 
 
-function CAudioProcessor.SetupProcessing(var setup: TProcessSetup): TResult;
+function CAudioProcessor.SetupProcessing(var setup: TProcessSetup): TResult; stdcall;
 begin
   WriteLog('CAudioProcessor.SetupProcessing');
 	result:=kResultTrue;

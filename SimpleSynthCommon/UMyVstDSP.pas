@@ -29,14 +29,14 @@ type
   private
     FXpos       : single;
     FPulseWidth : double;
-    function PulseWidthAdjusted(FxPos:double): double;
+    function PulseWidthAdjusted(AFxPos:double): double;
     procedure SetPulseWidth(value:double);
   protected
-    function ValueAt(FxPos:double): double;override;
+    function ValueAt(AFxPos:double): double;override;
   public
     property PulseWidth:double read FPulseWidth write SetPulseWidth;
     function Process:single;
-    constructor Create(const SampleRate: double);override;
+    constructor Create(const ASampleRate: double);override;
 end;
 
 type TMusicDspMoog = class
@@ -54,7 +54,7 @@ public
   function Process(input:single):single;
   property Resonance: single  write SetResonance; // 0..1
   property SampleRate: single write SetSampleRate;
-  constructor Create(samplerate:single);
+  constructor Create(ASampleRate:single);
 end;
 
 type TSimpleSynth = class
@@ -117,7 +117,7 @@ begin
   result:=result - PolyBlep(fmod(FxPos + 1-0.5));
 end;
 
-constructor TOscillator.Create(const SampleRate: double);
+constructor TOscillator.Create(const ASampleRate: double);
 begin
   inherited;
   FPulseWidth:=0.5;
@@ -130,17 +130,17 @@ begin
   result:=ValueAt(FxPos);
 end;
 
-function TOscillator.PulseWidthAdjusted(fxPos:double):double;
+function TOscillator.PulseWidthAdjusted(AFxPos:double):double;
 begin
-  if fxPos<=fPulseWidth then
-    result:=fxpos*0.5 / fPulseWidth
+  if AFxPos<=fPulseWidth then
+    result:=AFxPos*0.5 / fPulseWidth
   else
-    result:=0.5+ 0.5*(fxPos-fPulseWidth) / (1 - fPulseWidth);
+    result:=0.5+ 0.5*(AFxPos-fPulseWidth) / (1 - fPulseWidth);
 end;
 
-function TOscillator.ValueAt(FxPos: double): double;
+function TOscillator.ValueAt(AFxPos: double): double;
 begin
-  result:=inherited ValueAt(PulseWidthAdjusted(FxPos));
+  result:=inherited ValueAt(PulseWidthAdjusted(AFxPos));
 end;
 
 procedure TOscillator.SetPulseWidth(value: double);
@@ -176,9 +176,9 @@ end;
 
 (*********************************************************************************)
 
-constructor TMusicDspMoog.Create(samplerate: single);
+constructor TMusicDspMoog.Create(ASampleRate: single);
 begin
-  FSampleRate:=samplerate;
+  FSampleRate:=ASampleRate;
   FCutoff:=1000;
   Fresonance:=0;
   Reset;

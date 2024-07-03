@@ -32,7 +32,7 @@ type
      TVSTAutomationQueue = class
                            private
                              Fid:integer;
-                             FList:TList<TVSTAutomationItem>;
+                             FList:specialize TList<TVSTAutomationItem>;
                              function get(index:integer):TVSTAutomationItem;
                            public
                              procedure Add(sampleOffset:integer;value:double);

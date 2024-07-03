@@ -18,7 +18,7 @@ type TVST3Parameter  = record
                         min,max,defVal,value:double;
                         automate,isProgram,dirty:boolean;
                       end;
-     TVST3ParameterArray = TArray<TVST3Parameter>;
+     TVST3ParameterArray = specialize TArray<TVST3Parameter>;
      TVST3Program = class
                     strict private
                       values:array of double;
@@ -55,10 +55,13 @@ type TVST3Parameter  = record
         function GetNumPrograms:integer;
         function GetProgramName(index:integer):string;
      end;
+
+   { TVST3Controller }
+
    TVST3Controller = class(TVST3Processor,IVST3Controller,IVST3Processor)
    private
         FCurProgram:integer;
-        FPrograms: TList<TVST3Program>;
+        FPrograms: specialize TList<TVST3Program>;
         Fparameters:TVST3ParameterArray;
         FeditorForm:TForm;
         FnumUserParameters:integer;
@@ -66,7 +69,12 @@ type TVST3Parameter  = record
         FProcessorHandler:IProcessorHandler;
         FIdleTimer:TTimer;
         FSomethingDirty:boolean;
-        FMidiEventQueue:TArray<integer>;
+        FMidiEventQueue:specialize TArray<integer>;
+
+        function GetProcessorState:string;
+        procedure SetProcessorState(state:string);
+        procedure SetActive(active:boolean);
+
         procedure saveCurrentToProgram(prgm:integer);
         procedure SetProgram(prgm:integer;saveCurrent:boolean;updateProcessor:boolean);
         function ParmLookup(id: integer): integer;
@@ -108,7 +116,7 @@ type TVST3Parameter  = record
         function getParameterAsString(id: integer; value: double): string; virtual;
         procedure OnProgramChange(prgm:integer);virtual;
         function  GetEditorClass: TFormClass;virtual;
-        function GetMidiOutputEvents:TArray<integer>;override;final;
+        function GetMidiOutputEvents:specialize TArray<integer>;override;final;
         procedure OnEditOpen;virtual;
         procedure OnEditClose;virtual;
         procedure OnEditIdle;virtual;
@@ -131,7 +139,7 @@ constructor TVST3Controller.Create;
 begin
   WriteLog('TVST3Controller.Create');
   inherited;
-  FPrograms:=TList<TVST3Program>.Create;
+  FPrograms:=specialize TList<TVST3Program>.Create;
 end;
 
 function TVST3Controller.GetProgramName(index: integer): string;
@@ -172,7 +180,7 @@ begin
   SetProgram(prgm,true,true);
 end;
 
-function TVST3Controller.GetMidiOutputEvents: TArray<integer>;
+function TVST3Controller.GetMidiOutputEvents:specialize TArray<integer>;
 begin
   result:=FMidiEventQueue;
   SetLength(FMidiEventQueue,0);
@@ -195,6 +203,21 @@ begin
   ssl.free;
   sl.free;
   SetProgram(TempProgram,false,true);
+end;
+
+function TVST3Controller.GetProcessorState: string;
+begin
+
+end;
+
+procedure TVST3Controller.SetProcessorState(state: string);
+begin
+
+end;
+
+procedure TVST3Controller.SetActive(active: boolean);
+begin
+
 end;
 
 procedure TVST3Controller.saveCurrentToProgram(prgm:integer);
@@ -301,7 +324,7 @@ begin
   result:=NIL;
 end;
 
-function TVST3Controller.CreateForm(parent:pointer):TForm;
+function TVST3Controller.CreateForm(parent: pointer): Tform;
 VAR FeditorFormClass:TFormClass;
 begin
   FeditorFormClass:=GetEditorClass;
@@ -457,7 +480,7 @@ begin
     if FIdleTimer=NIL then
       FIdleTimer:=TTimer.Create(NIL);
     FIdleTimer.Interval:=100;
-    FIdleTimer.OnTimer:=TimerOnIdle;
+    FIdleTimer.OnTimer:=@TimerOnIdle;
     FIdleTimer.Enabled:=true;
   end
   else

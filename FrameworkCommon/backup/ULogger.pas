@@ -2,7 +2,7 @@ unit ULogger;    // renamed from UCodeSiteLogger
 
 interface
 
-procedure WriteLog(const s:string);
+procedure WriteLog(s:string);
 
 implementation
 
@@ -34,12 +34,11 @@ begin
 end;  }
 
 
-procedure WriteLog(const s:string);
+procedure WriteLog(s:string);
 begin
   // do nothing for now
   //  if not Enabled then exit;
   //CodeSite.Send(s);
-  OutputDebugString(PChar(s));
 end;
 
 begin

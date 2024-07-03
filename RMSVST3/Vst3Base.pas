@@ -696,7 +696,10 @@ type
       function CheckSizeConstraint(rect: PViewRect): TResult; stdcall;
     end;
 
-    IPlugFrame = interface(FUnknown)
+    IPlugFrame = interface ['{00000000-0000-0000-C000-000000000046}']
+         function QueryInterface({$IFDEF FPC_HAS_CONSTREF}constref{$ELSE}const{$ENDIF} iid : tguid;out obj) : longint;{$IFNDEF WINDOWS}cdecl{$ELSE}stdcall{$ENDIF};
+         function _AddRef : longint;{$IFNDEF WINDOWS}cdecl{$ELSE}stdcall{$ENDIF};
+         function _Release : longint;{$IFNDEF WINDOWS}cdecl{$ELSE}stdcall{$ENDIF};
       (** Called to inform the host about the resize of a given view. *)
       function ResizeView(view: IPlugView; newSize: PViewRect): TResult; stdcall;
     end;

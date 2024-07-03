@@ -44,7 +44,7 @@ private
       function SetUnitProgramData(listOrUnitId: TProgramListID; programIndex: int32; data: IBStream): TResult; stdcall;
 
 public
-  constructor Create(const Controller: IVST3Controller);
+  constructor Create(const AController: IVST3Controller);
 end;
 
 implementation
@@ -53,24 +53,24 @@ implementation
 
 uses ULogger, UVST3Utils;
 
-constructor CUnitInfo.Create(const Controller: IVST3Controller);
+constructor CUnitInfo.Create(const AController: IVST3Controller);
 begin
-  inherited Create(controller);
-  IVST3:=Controller;
+  inherited Create(AController);
+  IVST3:=AController;
 end;
 
 function CUnitInfo.GetProgramInfo(listId: TProgramListID; programIndex: int32;
-  attributeId: CString; attributeValue: PString128): TResult;
+  attributeId: CString; attributeValue: PString128): TResult; stdcall;
 begin
   result:=kNotImplemented;
 end;
 
-function CUnitInfo.GetProgramListCount: int32;
+function CUnitInfo.GetProgramListCount: int32;  stdcall;
 begin
   result:=1;
 end;
 
-function CUnitInfo.GetProgramListInfo(listIndex: int32;  out info: TProgramListInfo): TResult;
+function CUnitInfo.GetProgramListInfo(listIndex: int32;  out info: TProgramListInfo): TResult;  stdcall;
 begin
   if listIndex=0 then
   begin
@@ -83,34 +83,34 @@ begin
     result:=kResultFalse;
 end;
 
-function CUnitInfo.GetProgramName(listId: TProgramListID; programIndex: int32;  name: PString128): TResult;
+function CUnitInfo.GetProgramName(listId: TProgramListID; programIndex: int32;  name: PString128): TResult;    stdcall;
 begin
    AssignString(name^,IVST3.GetProgramName(programIndex));
   result:=kResultOk;
 end;
 
 function CUnitInfo.GetProgramPitchName(listId: TProgramListID;
-  programIndex: int32; midiPitch: int16; name: PString128): TResult;
+  programIndex: int32; midiPitch: int16; name: PString128): TResult;     stdcall;
 begin
   result:=kNotImplemented;
 end;
 
-function CUnitInfo.GetSelectedUnit: TUnitID;
+function CUnitInfo.GetSelectedUnit: TUnitID; stdcall;
 begin
   result:=kRootUnitId;
 end;
 
-function CUnitInfo.GetUnitByBus(aType: TMediaType; dir: TBusDirection; busIndex,  channel: int32; out unitId: TUnitID): TResult;
+function CUnitInfo.GetUnitByBus(aType: TMediaType; dir: TBusDirection; busIndex,  channel: int32; out unitId: TUnitID): TResult;stdcall;
 begin
   result:=kNotImplemented;
 end;
 
-function CUnitInfo.GetUnitCount: int32;
+function CUnitInfo.GetUnitCount: int32; stdcall;
 begin
   result:=1;
 end;
 
-function CUnitInfo.getUnitInfo(unitIndex: int32; out info: TUnitInfo): TResult;
+function CUnitInfo.getUnitInfo(unitIndex: int32; out info: TUnitInfo): TResult; stdcall;
 begin
   if (unitIndex = 0) then
   begin
@@ -124,17 +124,17 @@ begin
     result:=kResultFalse;
 end;
 
-function CUnitInfo.HasProgramPitchNames(listId: TProgramListID;  programIndex: int32): TResult;
+function CUnitInfo.HasProgramPitchNames(listId: TProgramListID;  programIndex: int32): TResult;stdcall;
 begin
   result:=kNotImplemented;
 end;
 
-function CUnitInfo.SelectUnit(unitId: TUnitID): TResult;
+function CUnitInfo.SelectUnit(unitId: TUnitID): TResult;  stdcall;
 begin
   result:=kNotImplemented;
 end;
 
-function CUnitInfo.SetUnitProgramData(listOrUnitId: TProgramListID;  programIndex: int32; data: IBStream): TResult;
+function CUnitInfo.SetUnitProgramData(listOrUnitId: TProgramListID;  programIndex: int32; data: IBStream): TResult; stdcall;
 begin
   WriteLog('CUnitInfo.SetUnitProgramData');
   result:=kResultTrue;

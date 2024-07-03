@@ -33,7 +33,7 @@ public
   (** This function is called, before the plugin is unloaded and can be used for
   cleanups. You have to release all references to any host application interfaces. *)
   function Terminate: TResult; stdcall;
-  constructor Create(const Controller: IVST3Processor);
+  constructor Create(const AController: IVST3Processor);
 end;
 
 
@@ -43,25 +43,25 @@ implementation
 
 uses ULogger,UVST3Utils;
 
-function CComponent.ActivateBus(vType: TMediaType; dir: TBusDirection;  index: int32; state: TBool): TResult;
+function CComponent.ActivateBus(vType: TMediaType; dir: TBusDirection;  index: int32; state: TBool): TResult; stdcall;
 begin
 //  WriteLog('CComponent.ActivateBus');
   result:=kResultOk;
 end;
 
-constructor CComponent.Create(const Controller: IVST3Processor);
+constructor CComponent.Create(const AController: IVST3Processor);
 begin
-  inherited Create(controller);
-  IVST3:=Controller;
+  inherited Create(AController);
+  IVST3:=AController;
 end;
 
-function CComponent.GetBusCount(vType: TMediaType; dir: TBusDirection): int32;
+function CComponent.GetBusCount(vType: TMediaType; dir: TBusDirection): int32; stdcall;
 begin
 //  WriteLog('CComponent.GetBusCount');
   result:=1; // just one in and out
 end;
 
-function CComponent.GetBusInfo(vType: TMediaType; dir: TBusDirection; index: int32; var bus: TBusInfo): TResult;
+function CComponent.GetBusInfo(vType: TMediaType; dir: TBusDirection; index: int32; var bus: TBusInfo): TResult;  stdcall;
 begin
  // WriteLog('CComponent.GetBusInfo');
   bus.mediaType:=vType;
@@ -73,20 +73,20 @@ begin
   result:=kResultOk;
 end;
 
-function CComponent.GetControllerClassId(var classId: TUID): TResult;
+function CComponent.GetControllerClassId(var classId: TUID): TResult;stdcall;
 begin
   WriteLog('CComponent.GetControllerClassId');
   classId:=TUID(IVST3.GetPluginInfo.PluginDef.vst3id);
   result:=kResultOk;
 end;
 
-function CComponent.GetRoutingInfo(var inInfo, outInfo: TRoutingInfo): TResult;
+function CComponent.GetRoutingInfo(var inInfo, outInfo: TRoutingInfo): TResult; stdcall;
 begin
   WriteLog('CComponent.GetRoutingInfo');
   result:=kResultOk;
 end;
 
-function CComponent.GetState(state: IBStream): TResult;
+function CComponent.GetState(state: IBStream): TResult;    stdcall;
 begin
   WriteLog('CComponent.GetState');
 // In reaper,and with a combined Component, EditController it is not needed to Getstate/SetState
@@ -94,7 +94,7 @@ begin
   result:=kResultOk;
 end;
 
-function CComponent.Initialize(context: FUnknown): TResult;
+function CComponent.Initialize(context: FUnknown): TResult; stdcall;
 begin
   result:=kResultOk;
   WriteLog('CComponent.Initialize');
@@ -104,20 +104,20 @@ begin
   IVST3.ProcessorInitialize;
 end;
 
-function CComponent.SetActive(state: TBool): TResult;
+function CComponent.SetActive(state: TBool): TResult;  stdcall;
 begin
   WriteLog('CComponent.SetActive');
   IVST3.SetActive(state<>0);
   result:=kResultOk;
 end;
 
-function CComponent.SetIoMode(mode: TIoMode): TResult;
+function CComponent.SetIoMode(mode: TIoMode): TResult;  stdcall;
 begin
   WriteLog('CComponent.SetIoMode');
   result:=kNotImplemented;
 end;
 
-function CComponent.SetState(state: IBStream): TResult;
+function CComponent.SetState(state: IBStream): TResult; stdcall;
 begin
   WriteLog('CComponent.SetState');
 // In reaper,and with a combined Component, EditController is not needed to Getstate/SetState
@@ -125,7 +125,7 @@ begin
   result:=kResultTrue;
 end;
 
-function CComponent.Terminate: TResult;
+function CComponent.Terminate: TResult; stdcall;
 begin
   WriteLog('CComponent.Terminate');
   IVST3.ProcessorTerminate;

@@ -51,7 +51,7 @@ type CEditController = class(TAggregatedObject,IEditController)
       cleanups. You have to release all references to any host application interfaces. *)
       function Terminate: TResult; stdcall;
 
-      constructor Create(const Controller: IVST3Controller);
+      constructor Create(const AController: IVST3Controller);
 
   private
 end;
@@ -62,93 +62,93 @@ implementation
 
 uses ULogger,SysUtils,UVST3Utils;
 
-constructor CEditController.Create(const Controller: IVST3Controller);
+constructor CEditController.Create(const AController: IVST3Controller);
 begin
-  inherited Create(controller);
-  IVST3:=Controller;
+  inherited Create(AController);
+  IVST3:=AController;
 end;
 
-function CEditController.CreateView(name: PAnsiChar): pointer;
+function CEditController.CreateView(name: PAnsiChar): pointer;stdcall;
 begin
   WriteLog('CEditController.CreateView');
   FPlugView:=CPlugView.Create(IVST3);
   result:=IPlugView(FPlugView);
 end;
 
-function CEditController.GetParameterCount: int32;
+function CEditController.GetParameterCount: int32; stdcall;
 begin
   result:=IVST3.GetParameterCount;
 end;
 
-function CEditController.GetParameterInfo(paramIndex: int32;  out info: TParameterInfo): TResult;
+function CEditController.GetParameterInfo(paramIndex: int32;  out info: TParameterInfo): TResult;stdcall;
 begin
   if IVST3.GetParameterInfo(paramIndex,info) then result:=kResultOk else result:=kResultFalse;
 end;
 
-function CEditController.GetParamNormalized(tag: TParamID): TParamValue;
+function CEditController.GetParamNormalized(tag: TParamID): TParamValue;  stdcall;
 begin
   result:=IVST3.getParameterValue(tag);
 end;
 
-function CEditController.GetParamStringByValue(tag: TParamID;  valueNormalized: TParamValue; text: PString128): TResult;
+function CEditController.GetParamStringByValue(tag: TParamID;  valueNormalized: TParamValue; text: PString128): TResult;stdcall;
 begin
   AssignString(text^,IVST3.GetParamStringByValue(tag,valueNormalized));
   result:=kResultOk;
 end;
 
-function CEditController.GetParamValueByString(tag: TParamID; text: PTChar;  out valueNormalized: TParamValue): TResult;
+function CEditController.GetParamValueByString(tag: TParamID; text: PTChar;  out valueNormalized: TParamValue): TResult;  stdcall;
 begin
   result:=kResultFalse;
 end;
 
-function CEditController.GetState(state: IBStream): TResult;
+function CEditController.GetState(state: IBStream): TResult;  stdcall;
 begin
   WriteLog('CEditController.GetState');
   WriteStream(state,STREAMMAGIC_CONTROLLER,IVST3.GetEditorState);
   result:=kResultOk;
 end;
 
-function CEditController.SetState(state: IBStream): TResult;
+function CEditController.SetState(state: IBStream): TResult;  stdcall;
 begin
   WriteLog('CEditController.SetState');
   IVST3.SetEditorState(ReadStream(state,STREAMMAGIC_CONTROLLER));
   result:=kResultOk;
 end;
 
-function CEditController.Initialize(context: FUnknown): TResult;
+function CEditController.Initialize(context: FUnknown): TResult; stdcall;
 begin
   WriteLog('CEditController.Initialize !!!!!');
   IVST3.ControllerInitialize;     // not called in reaper ??
   result:=kResultOk;
 end;
 
-function CEditController.NormalizedParamToPlain(tag: TParamID;  valueNormalized: TParamValue): TParamValue;
+function CEditController.NormalizedParamToPlain(tag: TParamID;  valueNormalized: TParamValue): TParamValue; stdcall;
 begin
   WriteLog('CEditController.NormalizedParamToPlain');
   result:=IVST3.NormalizedParamToPlain(tag,valueNormalized);
 end;
 
-function CEditController.PlainParamToNormalized(tag: TParamID; plainValue: TParamValue): TParamValue;
+function CEditController.PlainParamToNormalized(tag: TParamID; plainValue: TParamValue): TParamValue;   stdcall;
 begin
   WriteLog('CEditController.PlainParamToNormalized');
   result:=IVST3.PlainParamToNormalized(tag,plainValue);
 end;
 
-function CEditController.SetComponentHandler( handler: IComponentHandler): TResult;
+function CEditController.SetComponentHandler( handler: IComponentHandler): TResult; stdcall;
 begin
   WriteLog('CEditController.SetComponentHandler');
   IVST3.SetProcessorHandler(handler);
   result:=kResultOk;
 end;
 
-function CEditController.SetComponentState(state: IBStream): TResult;
+function CEditController.SetComponentState(state: IBStream): TResult;     stdcall;
 begin
   WriteLog('CEditController.SetComponentState');
   IVST3.ControllerSetProcessorState(ReadStream(state,STREAMMAGIC_PROCESSOR));
   result:=kResultOk;
 end;
 
-function CEditController.SetParamNormalized(tag: TParamID;  value: TParamValue): TResult;
+function CEditController.SetParamNormalized(tag: TParamID;  value: TParamValue): TResult;  stdcall;
 // from Host
 begin
   WriteLog('CEditController.SetParamNormalized');
@@ -156,7 +156,7 @@ begin
   result:=kResultOk;
 end;
 
-function CEditController.Terminate: TResult;
+function CEditController.Terminate: TResult;  stdcall;
 begin
   WriteLog('CEditController.Terminate');
   IVST3.ControllerTerminate;

@@ -20,7 +20,7 @@ public
   constructor Create(pluginInfo:TVSTInstrumentInfo);
 end;
 
-function CreatePlugin(pluginInfo:TVSTInstrumentInfo): pointer;stdcall;
+function CreatePlugin(pluginInfo:TVSTInstrumentInfo): IPluginFactory;stdcall;
 
 implementation
 
@@ -31,7 +31,7 @@ uses ULogger,SysUtils,UCEditController,UVST3Utils ;
 const CLTYPE_CONTROLLER = 28;
 const CLTYPE_PROCESSOR = 27;
 
-function CPluginFactory.CountClasses: int32;
+function CPluginFactory.CountClasses: int32;stdcall;
 begin
   WriteLog('CPluginFactory.CountClasses');
   result:=1;  //
@@ -67,7 +67,7 @@ begin
   _addRef;
 end;
 
-function CPluginFactory.CreateInstance(cid, iid: PAnsiChar;  var obj: pointer): TResult;
+function CPluginFactory.CreateInstance(cid, iid: PAnsiChar;  var obj: pointer): TResult;stdcall;
 VAR instance:FUnknown;
     guid:TGUID;
     found:boolean;
@@ -107,7 +107,7 @@ begin
   WriteLog('CPluginFactory.CreateInstance Done.');
 end;
 
-function CPluginFactory.GetClassInfo(index: int32; var info: TPClassInfo): TResult;
+function CPluginFactory.GetClassInfo(index: int32; var info: TPClassInfo): TResult;stdcall;
 VAR i:integer;
 begin
   WriteLog('CPluginFactory.GetClassInfo:'+inttostr(index));
@@ -125,21 +125,21 @@ begin
   result:=kResultOK;
 end;
 
-function CPluginFactory.GetClassInfo2(index: int32;  var info: TPClassInfo2): TResult;
+function CPluginFactory.GetClassInfo2(index: int32;  var info: TPClassInfo2): TResult;stdcall;
 begin
   WriteLog('CPluginFactory.GetClassInfo2:'+' '+IntToStr(index));
   info:=fClassInfo2;
   result:=kResultOK;
 end;
 
-function CPluginFactory.GetFactoryInfo(var info: TPFactoryInfo): TResult;
+function CPluginFactory.GetFactoryInfo(var info: TPFactoryInfo): TResult;   stdcall;
 begin
   WriteLog('CPluginFactory.GetFactoryInfo:');
   info:=factoryInfo;
   result:=kResultOK;
 end;
 
-function CreatePlugin(pluginInfo:TVSTInstrumentInfo): pointer;stdcall;
+function CreatePlugin(pluginInfo:TVSTInstrumentInfo): IPluginFactory;stdcall;  stdcall;
 begin
   WriteLog('CPluginFactory.CreatePlugin:');
   result:=IPluginFactory(CPluginFactory.Create(pluginInfo));

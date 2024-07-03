@@ -90,7 +90,7 @@ begin
   SetLength(buffer,l);
   for i:=0 to l-1 do
      buffer[i]:=ord(s[i+1]);
-  stream.Write(Buffer, l);
+  stream.Write(@Buffer[0], l);
 end;
 
 function  ReadStream(stream:IBStream;magic:integer):string;
@@ -105,7 +105,7 @@ begin
   if l<>magic then exit;
   stream.read(@l,sizeof(integer));
   SetLength(buffer,l);
-  stream.read(buffer,l);
+  stream.read(@buffer[0],l);
     for i:=0 to l-1 do
       result:=result+chr(buffer[i]);
 end;

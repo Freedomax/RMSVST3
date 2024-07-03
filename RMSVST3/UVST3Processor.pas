@@ -13,7 +13,7 @@ type
         procedure SamplerateChanged(samplerate:single);
         procedure TempoChanged(tempo:single);
         procedure PlayStateChanged(playing:boolean;ppq:integer);
-        function GetMidiOutputEvents:TArray<integer>;
+        function GetMidiOutputEvents:specialize TArray<integer>;
         function GetProcessorState:string;
         procedure SetProcessorState(state:string);
         procedure SetActive(active:boolean);
@@ -32,7 +32,7 @@ type
         procedure ProcessorParameterSetValue(id:integer;value:double);virtual; // will be overridden in Controller
         procedure OnSysexEvent(s:string);virtual;
         procedure OnMidiEvent(byte0,byte1,byte2:integer);virtual;
-        function GetMidiOutputEvents:TArray<integer>;virtual;
+        function GetMidiOutputEvents:specialize TArray<integer>;virtual;
         procedure Process32(samples,channels:integer;inputp, outputp: PPSingle);virtual;
         procedure SamplerateChanged(samplerate:single);virtual;
         procedure PlayStateChanged(playing:boolean;ppq:integer);virtual;
@@ -93,7 +93,7 @@ end;
 
 
 
-function TVST3Processor.GetMidiOutputEvents: TArray<integer>;
+function TVST3Processor.GetMidiOutputEvents:specialize  TArray<integer>;
 begin
   SetLength(result,0);
 end;
