@@ -183,7 +183,6 @@ function CPlugView.SetFrame(frame: IPlugFrame): TResult; stdcall;
 begin
   WriteLog('CPlugView.SetFrame');
   FFrame := frame;
-  //FFrame._AddRef;
   Result := kResultOk;
 end;
 

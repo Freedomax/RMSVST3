@@ -39,7 +39,8 @@ begin
   // do nothing for now
   //  if not Enabled then exit;
   //CodeSite.Send(s);
-  OutputDebugString(PChar(s));
+
+  //OutputDebugString(PChar(s));
 end;
 
 begin

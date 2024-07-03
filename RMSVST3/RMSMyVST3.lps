@@ -3,14 +3,14 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="12"/>
-    <BuildModes Active="Debug"/>
+    <BuildModes Active="Release"/>
     <Units>
       <Unit>
         <Filename Value="RMSMyVST3.lpr"/>
         <IsPartOfProject Value="True"/>
         <TopLine Value="18"/>
         <CursorPos X="15" Y="45"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -22,7 +22,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="38"/>
         <CursorPos X="3" Y="50"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit>
       <Unit>
         <Filename Value="Vst3Base.pas"/>
@@ -88,7 +88,7 @@
         <Filename Value="UVST3Controller.pas"/>
         <EditorIndex Value="7"/>
         <TopLine Value="18"/>
-        <CursorPos X="52" Y="32"/>
+        <CursorPos X="49" Y="32"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit>
@@ -104,17 +104,16 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="120"/>
-        <CursorPos X="34" Y="141"/>
+        <CursorPos X="10" Y="141"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="UCPlugView.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="155"/>
-        <CursorPos X="112" Y="177"/>
+        <TopLine Value="154"/>
+        <CursorPos X="5" Y="179"/>
         <UsageCount Value="22"/>
         <Bookmarks Count="2">
           <Item0 Y="180"/>
@@ -150,7 +149,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="42" Y="8"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="23"/>
       </Unit>
       <Unit>
         <Filename Value="UCComponent.pas"/>
@@ -185,9 +184,10 @@
       <Unit>
         <Filename Value="..\FrameworkCommon\ULogger.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
         <TopLine Value="12"/>
-        <CursorPos X="32" Y="30"/>
+        <CursorPos X="5" Y="43"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit>
