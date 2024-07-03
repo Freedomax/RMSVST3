@@ -1,6 +1,6 @@
 
 /RMSVST3/lib
-/RMSVST3/backup
+backup
 *.bak
 *.vst3
 *.dbg
