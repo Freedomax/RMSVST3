@@ -1,7 +1,8 @@
 
-/RMSVST3/lib
 backup
+lib
 *.bak
 *.vst3
 *.dbg
+*.lps
 *.lps

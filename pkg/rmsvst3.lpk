@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <PathDelim Value="\"/>
+    <Name Value="RMSVST3"/>
+    <Type Value="RunAndDesignTime"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <OtherUnitFiles Value="..\RMSVST3;..\FrameworkCommon"/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Files>
+      <Item>
+        <Filename Value="..\RMSVST3\UCComponent.pas"/>
+        <UnitName Value="UCComponent"/>
+      </Item>
+      <Item>
+        <Filename Value="..\RMSVST3\UCEditController.pas"/>
+        <UnitName Value="UCEditController"/>
+      </Item>
+      <Item>
+        <Filename Value="..\RMSVST3\UCMidiMapping.pas"/>
+        <UnitName Value="UCMidiMapping"/>
+      </Item>
+      <Item>
+        <Filename Value="..\RMSVST3\UCPluginFactory.pas"/>
+        <UnitName Value="UCPluginFactory"/>
+      </Item>
+      <Item>
+        <Filename Value="..\RMSVST3\UCPlugView.pas"/>
+        <UnitName Value="UCPlugView"/>
+      </Item>
+      <Item>
+        <Filename Value="..\RMSVST3\UCUnitInfo.pas"/>
+        <UnitName Value="UCUnitInfo"/>
+      </Item>
+      <Item>
+        <Filename Value="..\RMSVST3\UVST3Controller.pas"/>
+        <UnitName Value="UVST3Controller"/>
+      </Item>
+      <Item>
+        <Filename Value="..\RMSVST3\UVST3Processor.pas"/>
+        <UnitName Value="UVST3Processor"/>
+      </Item>
+      <Item>
+        <Filename Value="..\RMSVST3\UVST3Utils.pas"/>
+        <UnitName Value="UVST3Utils"/>
+      </Item>
+      <Item>
+        <Filename Value="..\RMSVST3\UVSTInstrument.pas"/>
+        <UnitName Value="UVSTInstrument"/>
+      </Item>
+      <Item>
+        <Filename Value="..\RMSVST3\Vst3Base.pas"/>
+        <UnitName Value="Vst3Base"/>
+      </Item>
+      <Item>
+        <Filename Value="..\FrameworkCommon\UCDataLayer.pas"/>
+        <UnitName Value="UCDataLayer"/>
+      </Item>
+      <Item>
+        <Filename Value="..\FrameworkCommon\UVSTBase.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="UVSTBase"/>
+      </Item>
+    </Files>
+    <RequiredPkgs>
+      <Item>
+        <PackageName Value="LCL"/>
+      </Item>
+      <Item>
+        <PackageName Value="FCL"/>
+      </Item>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>
