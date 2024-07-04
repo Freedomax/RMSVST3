@@ -14,6 +14,9 @@ const
   ID_PULSEWIDTH = 19;
 
 type
+
+  { TMyVSTPlugin }
+
   TMyVSTPlugin = class(TVSTInstrument)
   private
     FSimpleSynth: TSimpleSynth;
@@ -22,6 +25,7 @@ type
     procedure Process32(samples, channels: integer; inputp, outputp: PPSingle); override;
     procedure UpdateProcessorParameter(id: integer; Value: double); override;
     procedure OnInitialize; override;
+    procedure OnFinalize; override;
     procedure UpdateEditorParameter(id: integer; Value: double); override;
     procedure OnEditOpen; override;
     procedure OnProgramChange(prgm: integer); override;
@@ -71,6 +75,13 @@ begin
   //  AddProgram('Program 3');
 end;
 
+procedure TMyVSTPlugin.OnFinalize;
+begin
+  WriteLog('TMyVSTPlugin.OnFinalize');
+  FreeAndNil(FSimpleSynth);
+  inherited OnFinalize;
+end;
+
 procedure TMyVSTPlugin.OnMidiEvent(byte0, byte1, byte2: integer);
 
   procedure KeyEvent(key: integer; _on: boolean);
@@ -93,8 +104,8 @@ begin
   // note that for parameter based changed, you only have to update the processor
   // we COULD make an extra method in the fw OnMidiEventEditor, but that should be discussed
   // this is perhaps one of the reasons Steinberg chose to 'depricate' midi stuff
-  WriteLog('TMyVSTPlugin.OnMidiEvent:' + byte0.ToString + ' ' + byte1.ToString +
-    ' ' + byte2.ToString);
+  WriteLog('TMyVSTPlugin.OnMidiEvent:' + byte0.ToString + ' ' +
+    byte1.ToString + ' ' + byte2.ToString);
 
   status := byte0 and $F0;
   if status = MIDI_NOTE_ON then KeyEvent(byte1, byte2 > 0)
