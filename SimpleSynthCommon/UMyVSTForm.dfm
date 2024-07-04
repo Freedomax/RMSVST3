@@ -11,9 +11,9 @@ object FormMyVST: TFormMyVST
   Font.Color = clWindowText
   Font.Height = -13
   Font.Name = 'Tahoma'
-  LCLVersion = '3.99.0.0'
   Scaled = False
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   object Label1: TLabel
     Left = 32
     Height = 16

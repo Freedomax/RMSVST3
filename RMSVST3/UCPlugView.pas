@@ -69,7 +69,6 @@ begin
     if FeditorForm <> nil then
       with FEditorForm do
       begin
-        //ParentWindow := PtrUInt(parent);
         FeditorForm.Parent := parent;
         Show;
         BorderStyle := bsNone;
@@ -93,8 +92,7 @@ function CPlugView.Removed: TResult; stdcall;
 begin
   WriteLog('CPlugView.Removed');
   IVST3.EditClose;
-  FeditorForm.Hide;
-  FEditorForm.Parent := nil;
+  FreeAndNil(FeditorForm);
   Result := kResultOk;
 end;
 

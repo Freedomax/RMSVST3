@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <TopLine Value="18"/>
         <CursorPos X="15" Y="45"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -20,17 +20,16 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="38"/>
-        <CursorPos X="3" Y="50"/>
-        <UsageCount Value="23"/>
+        <CursorPos X="55" Y="58"/>
+        <UsageCount Value="24"/>
       </Unit>
       <Unit>
         <Filename Value="Vst3Base.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="651"/>
-        <CursorPos X="16" Y="669"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="664"/>
+        <CursorPos X="23" Y="672"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -46,14 +45,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="14"/>
         <CursorPos X="37" Y="21"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="24"/>
       </Unit>
       <Unit>
         <Filename Value="..\SimpleSynthCommon\UMyVstDSP.pas"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="170"/>
-        <CursorPos X="17" Y="182"/>
-        <UsageCount Value="10"/>
+        <TopLine Value="157"/>
+        <CursorPos X="42" Y="177"/>
+        <UsageCount Value="11"/>
       </Unit>
       <Unit>
         <Filename Value="..\SimpleSynthCommon\UPianoKeyboard.pas"/>
@@ -86,38 +85,37 @@
       </Unit>
       <Unit>
         <Filename Value="UVST3Controller.pas"/>
-        <EditorIndex Value="7"/>
-        <TopLine Value="18"/>
-        <CursorPos X="49" Y="32"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="55"/>
+        <CursorPos X="19" Y="121"/>
+        <UsageCount Value="12"/>
       </Unit>
       <Unit>
         <Filename Value="UVSTBase.pas"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="31" Y="19"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="12"/>
       </Unit>
       <Unit>
         <Filename Value="..\SimpleSynthCommon\UMyVst.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="120"/>
-        <CursorPos X="10" Y="141"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="34"/>
+        <CursorPos X="27" Y="49"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="UCPlugView.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="154"/>
-        <CursorPos X="5" Y="179"/>
-        <UsageCount Value="22"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="78"/>
+        <CursorPos X="25" Y="97"/>
+        <UsageCount Value="23"/>
         <Bookmarks Count="2">
           <Item0 Y="180"/>
-          <Item1 X="3" Y="88" ID="1"/>
+          <Item1 X="3" Y="87" ID="1"/>
         </Bookmarks>
         <Loaded Value="True"/>
       </Unit>
@@ -142,14 +140,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="74"/>
         <CursorPos X="82" Y="93"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="24"/>
       </Unit>
       <Unit>
         <Filename Value="UCAudioProcessor.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="42" Y="8"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
       </Unit>
       <Unit>
         <Filename Value="UCComponent.pas"/>
@@ -157,14 +155,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="100"/>
         <CursorPos X="21" Y="55"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="24"/>
       </Unit>
       <Unit>
         <Filename Value="UCEditController.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="55" Y="159"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="24"/>
       </Unit>
       <Unit>
         <Filename Value="UCMidiMapping.pas"/>
@@ -175,106 +173,54 @@
       <Unit>
         <Filename Value="UCPluginFactory.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="113"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="116"/>
         <CursorPos X="22" Y="142"/>
-        <UsageCount Value="22"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="24"/>
       </Unit>
       <Unit>
         <Filename Value="..\FrameworkCommon\ULogger.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="12"/>
-        <CursorPos X="5" Y="43"/>
-        <UsageCount Value="20"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="55" Y="21"/>
+        <UsageCount Value="22"/>
       </Unit>
       <Unit>
         <Filename Value="D:\soft\fpcupdeluxe\fpcsrc\packages\vcl-compat\src\system.ioutils.pp"/>
         <UnitName Value="System.IOUtils"/>
-        <EditorIndex Value="6"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="11"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="28">
+    <JumpHistory HistoryIndex="21">
       <Position>
-        <Filename Value="UCPluginFactory.pas"/>
-        <Caret Line="140" Column="57" TopLine="116"/>
-      </Position>
-      <Position>
-        <Filename Value="UCPluginFactory.pas"/>
-        <Caret Line="142" Column="22" TopLine="116"/>
-      </Position>
-      <Position>
-        <Filename Value="UCPluginFactory.pas"/>
-        <Caret Line="144" Column="40" TopLine="116"/>
-      </Position>
-      <Position>
-        <Filename Value="UCPluginFactory.pas"/>
-        <Caret Line="22" Column="48" TopLine="5"/>
-      </Position>
-      <Position>
-        <Filename Value="UCPluginFactory.pas"/>
-        <Caret Line="23" Column="22" TopLine="5"/>
-      </Position>
-      <Position>
-        <Filename Value="UVST3Controller.pas"/>
-        <Caret Line="32" Column="52" TopLine="18"/>
+        <Filename Value="UCPlugView.pas"/>
+        <Caret Line="9" Column="16"/>
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
-        <Caret Line="168" Column="27" TopLine="142"/>
+        <Caret Line="67" Column="19" TopLine="44"/>
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
-        <Caret Line="19" Column="31" TopLine="3"/>
+        <Caret Line="68" Column="18" TopLine="44"/>
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
-        <Caret Line="66" Column="15" TopLine="49"/>
+        <Caret Line="69" Column="19" TopLine="44"/>
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
-        <Caret Line="75" Column="26" TopLine="58"/>
+        <Caret Line="70" Column="23" TopLine="44"/>
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
-        <Caret Line="165" TopLine="140"/>
+        <Caret Line="72" Column="20" TopLine="44"/>
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
-        <Caret Line="85" Column="25" TopLine="66"/>
-      </Position>
-      <Position>
-        <Filename Value="UCPlugView.pas"/>
-        <Caret Line="64" Column="7" TopLine="46"/>
-      </Position>
-      <Position>
-        <Filename Value="UCPlugView.pas"/>
-        <Caret Line="67" Column="19" TopLine="46"/>
-      </Position>
-      <Position>
-        <Filename Value="UCPlugView.pas"/>
-        <Caret Line="59" Column="36" TopLine="46"/>
-      </Position>
-      <Position>
-        <Filename Value="UCPlugView.pas"/>
-        <Caret Line="67" Column="19" TopLine="52"/>
-      </Position>
-      <Position>
-        <Filename Value="UCPlugView.pas"/>
-        <Caret Line="68" Column="18" TopLine="52"/>
-      </Position>
-      <Position>
-        <Filename Value="UCPlugView.pas"/>
-        <Caret Line="80" Column="25" TopLine="65"/>
-      </Position>
-      <Position>
-        <Filename Value="UCPlugView.pas"/>
-        <Caret Line="82" Column="31" TopLine="65"/>
+        <Caret Line="82" Column="31" TopLine="63"/>
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
@@ -282,7 +228,7 @@
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
-        <Caret Line="96" Column="14" TopLine="67"/>
+        <Caret Line="96" Column="14" TopLine="79"/>
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
@@ -298,22 +244,43 @@
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
-        <Caret Line="67" Column="19" TopLine="47"/>
+        <Caret Line="67" Column="19" TopLine="38"/>
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
-        <Caret Line="68" Column="18" TopLine="47"/>
+        <Caret Line="68" Column="18" TopLine="39"/>
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
-        <Caret Line="69" Column="19" TopLine="47"/>
-      </Position>
-      <Position>
-        <Filename Value="..\FrameworkCommon\ULogger.pas"/>
+        <Caret Line="64" Column="53" TopLine="40"/>
       </Position>
       <Position>
         <Filename Value="UCPlugView.pas"/>
-        <Caret Line="42" Column="25" TopLine="21"/>
+        <Caret Line="94" Column="2" TopLine="65"/>
+      </Position>
+      <Position>
+        <Filename Value="UCPlugView.pas"/>
+        <Caret Line="12" Column="5"/>
+      </Position>
+      <Position>
+        <Filename Value="UCPlugView.pas"/>
+        <Caret Line="37" Column="56" TopLine="30"/>
+      </Position>
+      <Position>
+        <Filename Value="UCPlugView.pas"/>
+        <Caret Line="179" TopLine="153"/>
+      </Position>
+      <Position>
+        <Filename Value="UCPlugView.pas"/>
+        <Caret Line="22" Column="29" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="Vst3Base.pas"/>
+        <Caret Line="659" Column="29" TopLine="645"/>
+      </Position>
+      <Position>
+        <Filename Value="UCPlugView.pas"/>
+        <Caret Line="22" Column="28" TopLine="10"/>
       </Position>
     </JumpHistory>
     <RunParams>
