@@ -122,6 +122,10 @@
         <Filename Value="..\SimpleSynthCommon\UMyVstDSP.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="..\SimpleSynthCommon\UPianoKeyboard.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
